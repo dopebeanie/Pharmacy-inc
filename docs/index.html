@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Pharmacy INC. — ЛОСТЕНСОУЛ · Pharmacy I &amp; II</title>
+<meta name="description" content="Pharmacy INC. — статичный музыкальный плеер. ЛОСТЕНСОУЛ: два альбома, 50 треков, тексты песен. Работает полностью в браузере.">
+<meta name="theme-color" content="#0a0612">
+<link rel="icon" type="image/png" href="assets/ico.png">
+<link rel="apple-touch-icon" href="assets/ico.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/styles.css?v=14">
+</head>
+<body>
+<a class="skip" href="#tracks">Перейти к трекам</a>
+<div class="bg" aria-hidden="true">
+  <div class="bg__orb bg__orb--a"></div>
+  <div class="bg__orb bg__orb--b"></div>
+  <div class="bg__orb bg__orb--c"></div>
+  <div class="bg__grain"></div>
+</div>
+
+<header class="top" data-spot>
+  <div class="top__inner">
+    <div class="brand">
+      <span class="brand__pill" aria-hidden="true">
+        <img src="assets/ico.png" alt="">
+      </span>
+      <div>
+        <strong class="brand__name">Pharmacy INC.</strong>
+        <span class="brand__sub">ЛОСТЕНСОУЛ · Pharmacy</span>
+      </div>
+    </div>
+    <nav class="top__nav" aria-label="Разделы сайта">
+      <a href="#albums">Альбомы</a>
+      <a href="#covers">Обложки</a>
+      <a href="#tracks">Треки</a>
+    </nav>
+    <div class="top__search">
+      <span class="top__search-ic" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="11" cy="11" r="6"/><path d="M15.8 15.8L20 20"/></svg>
+      </span>
+      <input id="search" type="text" placeholder="Поиск: название, продюсер, альбом…" aria-label="Поиск по трекам" autocomplete="off">
+    </div>
+    <nav class="top__stats" aria-label="Статистика каталога">
+      <div><strong id="statTracks">50</strong><span>треков</span></div>
+      <div><strong id="statAlbums">2</strong><span>альбома</span></div>
+      <div><strong id="statTime">0:00</strong><span>музыки</span></div>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero" aria-label="Об исполнителе">
+    <div class="hero__card" data-spot data-tilt>
+      <div class="hero__glow"></div>
+      <img id="artistImg" class="hero__photo" src="assets/covers/artist.jpg" alt="Фото исполнителя ЛОСТЕНСОУЛ" loading="lazy">
+      <div class="hero__body">
+        <p class="kicker">Исполнитель</p>
+        <h1 class="hero__title">ЛОСТЕНСОУЛ</h1>
+        <p class="hero__text">Соулов Артём Витальевич — независимый российский исполнитель, продюсер и создатель творческого объединения «Dishonesty Crew». Строит карьеру в музыкальной индустрии с 2019 года. Также известен как poisonluv. Дилогия «Pharmacy»: первая часть — «They Won’t Hear You.», вторая — «Maybe they need us.»</p>
+        <div class="hero__tags"><span>Pharmacy I · 20</span><span>Pharmacy II · 30</span><span>тексты внутри</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="albums" aria-label="Альбомы">
+    <div class="sec-head">
+      <h2>Альбомы</h2>
+      <p>Нажмите на карточку, чтобы отфильтровать треки</p>
+    </div>
+    <div id="albumGrid" class="album-grid"></div>
+  </section>
+
+  <section id="covers" aria-label="Обложки">
+    <div class="sec-head">
+      <h2>Обложки</h2>
+      <p>Нажмите, чтобы рассмотреть в крупном размере</p>
+    </div>
+    <div id="coverGrid" class="cover-grid"></div>
+  </section>
+
+  <section id="tracks" aria-label="Треки">
+    <div class="sec-head sec-head--row">
+      <div><h2>Треки</h2><p id="trackCount">50 из 50</p></div>
+      <div id="albumFilter" class="filter" role="group" aria-label="Фильтр по альбомам">
+        <button data-filter="all" data-magnet>Все</button>
+        <button data-filter="pharmacy-1" class="is-on" data-magnet>Pharmacy I</button>
+        <button data-filter="pharmacy-2" data-magnet>Pharmacy II</button>
+      </div>
+    </div>
+    <div id="trackList" class="tracks"></div>
+    <details class="keys">
+      <summary>Горячие клавиши</summary>
+      <ul>
+        <li><kbd>Space</kbd> — играть / пауза</li>
+        <li><kbd>←</kbd><kbd>→</kbd> — перемотка ±10 сек</li>
+        <li><kbd>↑</kbd><kbd>↓</kbd> — громкость</li>
+        <li><kbd>M</kbd> — mute · <kbd>S</kbd> — shuffle · <kbd>R</kbd> — repeat</li>
+        <li><kbd>L</kbd> — текст песни · <kbd>Q</kbd> — очередь</li>
+        <li><kbd>Esc</kbd> — закрыть панели</li>
+      </ul>
+    </details>
+  </section>
+
+  <footer class="foot">
+    <p><strong>Pharmacy INC.</strong> · ЛОСТЕНСОУЛ</p>
+  </footer>
+</main>
+
+<!-- Нижний плеер -->
+<div class="player" role="region" aria-label="Плеер">
+  <div class="player__inner">
+    <div class="player__track">
+      <img id="npCover" src="assets/covers/pharmacy-1.jpg" alt="Обложка текущего трека">
+      <div class="player__meta">
+        <strong id="npTitle">Выберите трек</strong>
+        <span id="npArtist">Pharmacy INC.</span>
+      </div>
+    </div>
+    <div class="player__center">
+      <div class="player__btns">
+        <button id="btnShuffle" class="icon-btn" data-magnet aria-label="Перемешать (S)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 7h3.2c4.5 0 5.3 10 9.6 10H20"/><path d="M18.5 15.5L20 17.5l-1.5 2"/><path d="M4 17h3.2c1.2 0 2.2-.7 3-1.8"/><path d="M13.4 8.8c.8-1.1 1.8-1.8 3-1.8H20"/><path d="M18.5 5L20 7l-1.5 2"/></svg></button>
+        <button id="btnPrev" class="icon-btn" data-magnet aria-label="Предыдущий трек"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M18 6l-8.5 6 8.5 6z" fill="currentColor" stroke="none"/><rect x="5.4" y="6" width="2.6" height="12" rx="1.1" fill="currentColor" stroke="none"/></svg></button>
+        <button id="btnPlay" class="play-btn" data-magnet aria-label="Играть (Space)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M8 5.5v13l11-6.5z" fill="currentColor" stroke="none"/></svg></button>
+        <button id="btnNext" class="icon-btn" data-magnet aria-label="Следующий трек"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6 6l8.5 6L6 18z" fill="currentColor" stroke="none"/><rect x="16" y="6" width="2.6" height="12" rx="1.1" fill="currentColor" stroke="none"/></svg></button>
+        <button id="btnRepeat" class="icon-btn" data-magnet aria-label="Повтор (R)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M17 2.5L20.5 6 17 9.5"/><path d="M3.5 11.5v-1a4 4 0 0 1 4-4h12"/><path d="M7 21.5L3.5 18 7 14.5"/><path d="M20.5 12.5v1a4 4 0 0 1-4 4h-12"/></svg></button>
+      </div>
+      <div class="player__seek">
+        <span id="tCur">0:00</span>
+        <input id="seek" type="range" min="0" max="1000" value="0" step="1" aria-label="Позиция воспроизведения">
+        <span id="tDur">0:00</span>
+      </div>
+    </div>
+    <div class="player__side">
+      <button id="btnMute" class="icon-btn" data-magnet aria-label="Громкость (M)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 9.5v5h3.5L12 18.5v-13z" fill="currentColor" stroke="none" opacity=".9"/><path d="M15 9.2a4.2 4.2 0 0 1 0 5.6"/><path d="M17.4 7a7.4 7.4 0 0 1 0 10"/></svg></button>
+      <input id="vol" type="range" min="0" max="100" value="85" step="1" aria-label="Громкость">
+      <button id="btnLyrics" class="icon-btn" data-magnet aria-label="Текст песни (L)" title="Текст (L)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6 4h9l3 3v13H6z"/><path d="M9 11.5h6M9 14.5h6M9 17.5h3.5"/></svg></button>
+      <button id="btnQueue" class="icon-btn" data-magnet aria-label="Очередь (Q)" title="Очередь (Q)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 6.5h12"/><path d="M4 11h12"/><path d="M4 15.5h7"/><circle cx="17.5" cy="16.5" r="2.6"/><path d="M19.7 18.4l2 2"/></svg></button>
+      <button id="btnDownload" class="icon-btn" data-magnet aria-label="Скачать трек" title="Скачать"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 4v10.5"/><path d="M7.5 10.5L12 15l4.5-4.5"/><path d="M5 19.5h14"/></svg></button>
+    </div>
+  </div>
+  <div id="playerAudioSlot" hidden></div>
+</div>
+
+<!-- Приветственное окно -->
+<div id="welcome" class="welcome" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Добро пожаловать">
+  <div class="welcome__card">
+    <button id="welcomeClose" class="welcome__x" aria-label="Закрыть приветствие">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+    <img class="welcome__logo" src="assets/ico.png" alt="Логотип Pharmacy INC.">
+    <p class="kicker">Добро пожаловать</p>
+    <h2 class="welcome__title">Pharmacy INC.</h2>
+    <p class="welcome__text">ЛОСТЕНСОУЛ · два альбома · 50 треков · тексты песен. Всё работает прямо в браузере.</p>
+    <div class="welcome__row">
+      <button id="welcomeGo" class="btn btn--primary" data-magnet>Слушать</button>
+      <button id="welcomeAlbums" class="btn btn--ghost" data-magnet>К альбомам</button>
+    </div>
+    <label class="welcome__check"><input type="checkbox" id="welcomeHide"><span class="check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span> Больше не показывать</label>
+  </div>
+</div>
+
+<!-- Просмотр обложки -->
+<div id="lightbox" class="lightbox" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Просмотр обложки">
+  <figure class="lightbox__frame">
+    <img id="lightboxImg" src="" alt="Обложка крупно">
+    <figcaption id="lightboxCap"></figcaption>
+    <button id="lightboxClose" class="btn btn--ghost">Закрыть</button>
+  </figure>
+</div>
+
+<div id="backdrop" class="backdrop" aria-hidden="true"></div>
+
+<!-- Панель очереди -->
+<aside id="queuePanel" class="sheet" aria-hidden="true" aria-label="Очередь воспроизведения">
+  <div class="sheet__head">
+    <h2>Очередь</h2>
+    <div>
+      <button id="queueClear" class="btn btn--ghost">Очистить</button>
+      <button id="queueClose" class="btn btn--ghost" aria-label="Закрыть очередь">Закрыть</button>
+    </div>
+  </div>
+  <div id="queueList" class="sheet__body"></div>
+</aside>
+
+<!-- Панель текста -->
+<aside id="lyricsPanel" class="lyrics-pop" aria-hidden="true" aria-label="Текст песни">
+  <div class="sheet__head">
+    <h2 id="lyricsTitle">Текст песни</h2>
+    <button id="lyricsClose" class="btn btn--ghost" aria-label="Закрыть текст">Закрыть</button>
+  </div>
+  <div id="lyricsBody" class="sheet__body lyrics"></div>
+</aside>
+
+<div id="dbg" class="dbg" hidden></div>
+<div id="toasts" aria-live="polite"></div>
+<noscript><p style="text-align:center;padding:2rem">Для работы плеера нужен включённый JavaScript.</p></noscript>
+<script type="module" src="assets/js/app.js?v=15"></script>
+</body>
+</html>
